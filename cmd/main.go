@@ -12,5 +12,9 @@ func main() {
 	route := gin.Default()
 	db.ConnectDatabase()
 	route.POST("/user", rest.AddUser)
+	route.GET("/user", rest.GetUsers)
+	route.GET("/user/:id", rest.GetUser)
+	route.PUT("/user/:id", rest.UpdateUser)
+	route.DELETE("/user/:id", rest.DeleteUser)
 	route.Run(":8080")
 }
