@@ -12,10 +12,9 @@ import (
 var Db *sql.DB
 
 func ConnectDatabase() {
-
-	err := godotenv.Load()
+	err := godotenv.Load("/Users/aoulaa/Documents/projects/go-todo/.env")
 	if err != nil {
-		fmt.Println("Error is occurred  on .env file please check")
+		fmt.Println("Error loading .env file")
 	}
 	host := os.Getenv("POSTGRES_HOST")
 	port, _ := strconv.Atoi(os.Getenv("POSTGRES_PORT"))
