@@ -17,7 +17,11 @@ func ConnectDatabase() {
 		fmt.Println("Error loading .env file")
 	}
 	host := os.Getenv("POSTGRES_HOST")
-	port, _ := strconv.Atoi(os.Getenv("POSTGRES_PORT"))
+	port, err := strconv.Atoi(os.Getenv("POSTGRES_PORT"))
+	if err != nil {
+		fmt.Println("Error while converting port to integer")
+		panic(err)
+	}
 	user := os.Getenv("POSTGRES_USER")
 	dbname := os.Getenv("POSTGRES_DB")
 	password := os.Getenv("POSTGRES_PASSWORD")
@@ -33,4 +37,9 @@ func ConnectDatabase() {
 		Db = db
 		fmt.Println("Successfully connected to database!")
 	}
+}
+
+func CloseDatabase() {
+	Db.Close()
+	fmt.Println("Database connection closed!")
 }

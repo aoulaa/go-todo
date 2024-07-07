@@ -71,7 +71,7 @@ func GetUsers(ctx *gin.Context) {
 	if err != nil {
 		errMsg := ErrorResponse{
 			Code:    400,
-			Message: fmt.Sprintf("Couldn't create the new user: %v", err),
+			Message: fmt.Sprintf("Couldn't get the new user: %v", err),
 		}
 		ctx.JSON(http.StatusBadRequest, errMsg)
 		return
@@ -85,7 +85,7 @@ func GetUsers(ctx *gin.Context) {
 		if err != nil {
 			errMsg := ErrorResponse{
 				Code:    400,
-				Message: fmt.Sprintf("Couldn't create the new user: %v", err),
+				Message: fmt.Sprintf("Couldn't get the new user: %v", err),
 			}
 			ctx.JSON(http.StatusBadRequest, errMsg)
 			return
